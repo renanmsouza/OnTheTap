@@ -5,12 +5,15 @@ class CRUDModel {
     // _Protected
         _conn;    
         _tableName;
+        _viewName;
         _keyList;
         _fieldList;
     // Public
 
-    constructor(tableName) {
+    constructor(tableName, viewName) {
         this._tableName = tableName;
+        this._viewName = viewName;
+
         this._keyList = [];
         this._fieldList = [];
 
@@ -53,8 +56,10 @@ class CRUDModel {
 
     list() {
         return new Promise((resolve, reject) => {
+            var table = this._viewName || this._tableName;
+
             // list query
-            let query = 'Select * from '+this._tableName;
+            let query = 'Select * from '+table;
 
             this._conn.query({
                 sql: query,
@@ -72,11 +77,13 @@ class CRUDModel {
 
     get(data) {
         return new Promise(async (resolve, reject) => {
+            var table = this._viewName || this._tableName;
+            
             var query = '';
             // get query
             await this.setFileldList()
                 .then(() => {
-                    query = 'Select * from '+this._tableName+' Where '
+                    query = 'Select * from '+ table +' Where '
                     for(let i = 0; i < this._keyList.length; i++) {
                         if (i > 1) {
                             query = query + ' and '

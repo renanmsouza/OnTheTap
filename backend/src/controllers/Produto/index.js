@@ -2,7 +2,7 @@ const CRUDController = require('../../components/CRUDController');
 
 class Produto extends CRUDController {
     constructor() {
-        super('Produto', 'Produto');
+        super('Produto', 'Produto', 'vwProduto');
     }
 
     async listIngredientes(req, res) {

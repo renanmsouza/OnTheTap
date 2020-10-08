@@ -3,15 +3,17 @@ class CRUDController {
         #Model;
     // _Protected
         _tableName;
+        _viewName;
 
-    constructor(tableName, modelName) {
+    constructor(tableName, modelName, viewName) {
         this.#Model = require('../../models/'+modelName);
         this._tableName = tableName;
+        this._viewName = viewName;
     }
 
     createModel() {
         return new Promise((resolve, reject) => {
-            resolve(new this.#Model(this._tableName));
+            resolve(new this.#Model(this._tableName, this._viewName));
         })
     }
 
