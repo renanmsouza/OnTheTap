@@ -22,4 +22,12 @@ module.exports = function(app) {
     app.delete('/cadastros/venda/del', function(req, res) {
         Venda.del(req, res);
     });
+
+    app.get('/cadastros/venda/listar/itens', function(req, res) {
+        Venda.listitens(req, res);
+    });
+
+    app.get('/cadastros/venda/get/item', function(req, res) {
+        Venda.getItem(req, res);
+    });
 }

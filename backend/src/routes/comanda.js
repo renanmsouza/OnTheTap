@@ -22,4 +22,13 @@ module.exports = function(app) {
     app.delete('/cadastros/comanda/del', function(req, res) {
         Comanda.del(req, res);
     });
+
+
+    app.get('/cadastros/comanda/listar/itens', function(req, res) {
+        Comanda.listitens(req, res);
+    });
+
+    app.get('/cadastros/comanda/get/item', function(req, res) {
+        Comanda.getItem(req, res);
+    });
 }
