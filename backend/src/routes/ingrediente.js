@@ -1,25 +1,25 @@
-const Constroller = require('../controllers/Ingredientes');
+const Constroller = require('../controllers/Ingrediente');
 
 module.exports = function(app) {
-    const Ingredientes = new Constroller();
+    const Ingrediente = new Constroller();
 
-    app.get('/cadastros/ingredientes/listar', function(req, res) {
-        Ingredientes.list(req, res);
+    app.get('/cadastros/ingrediente/listar', function(req, res) {
+        Ingrediente.list(req, res);
     });
 
-    app.get('/cadastros/ingredientes/get', function(req, res) {
-        Ingredientes.get(req, res);
+    app.get('/cadastros/ingrediente/get', function(req, res) {
+        Ingrediente.get(req, res);
     });
 
-    app.put('/cadastros/ingredientes/', function(req, res) {
-        Ingredientes.set(req, res);
+    app.put('/cadastros/ingrediente/', function(req, res) {
+        Ingrediente.set(req, res);
     });
 
-    app.post('/cadastros/ingredientes/', function(req, res) {
-        Ingredientes.post(req, res);
+    app.post('/cadastros/ingrediente/', function(req, res) {
+        Ingrediente.post(req, res);
     });
 
-    app.delete('/cadastros/ingredientes/del', function(req, res) {
-        Ingredientes.del(req, res);
+    app.delete('/cadastros/ingrediente/del', function(req, res) {
+        Ingrediente.del(req, res);
     });
 }
