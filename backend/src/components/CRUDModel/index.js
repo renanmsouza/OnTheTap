@@ -3,11 +3,6 @@ const Database = require('../../Database');
 class CRUDModel {
     // #Private   
     // _Protected
-        _conn;    
-        _tableName;
-        _viewName;
-        _keyList;
-        _fieldList;
     // Public
 
     constructor(tableName, viewName) {
@@ -26,7 +21,7 @@ class CRUDModel {
 
     // Define os campos da Tabela
     setFileldList() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this._conn.query({
                 sql: 'SHOW columns FROM '+this._tableName,
                 values: []
@@ -76,7 +71,7 @@ class CRUDModel {
     }
 
     get(data) {
-        return new Promise(async (resolve, reject) => {
+        return new Promise( async (resolve, reject) => {
             var table = this._viewName || this._tableName;
             
             var query = '';
@@ -108,7 +103,7 @@ class CRUDModel {
     }
 
     set(data) {
-        return new Promise(async (resolve, reject) => {
+        return new Promise( async (resolve, reject) => {
             var query = '';
             // set query
             await this.setFileldList()
@@ -168,7 +163,7 @@ class CRUDModel {
     }
 
     del(data) {
-        return new Promise(async (resolve, reject) => {
+        return new Promise( async (resolve, reject) => {
             var query = '';
             //del query
             await this.setFileldList()
