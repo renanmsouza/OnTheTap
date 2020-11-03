@@ -1,6 +1,6 @@
 import CRUDModel from '../../Components/CRUDModel';
 
-class Venda extends CRUDModel {
+class Promocao extends CRUDModel {
     constructor(tableName: String) {
         super(tableName, undefined);
     }
@@ -9,7 +9,7 @@ class Venda extends CRUDModel {
         return new Promise((resolve, reject) => {
             this._conn = this._db.connection();
             // list query
-            let query = 'Select * from ItensVenda Where idVenda = ?';
+            let query = 'Select * from ItensPromocao Where idPromocao = ?';
 
             this._conn.query({
                 sql: query,
@@ -29,7 +29,7 @@ class Venda extends CRUDModel {
         return new Promise((resolve, reject) => {
             this._conn = this._db.connection();
             // list query
-            let query = 'Select * from ItensVenda Where idVenda = ? and idProduto = ?';
+            let query = 'Select * from ItensPromocao Where idPromocao = ? and idProduto = ?';
 
             this._conn.query({
                 sql: query,
@@ -45,11 +45,11 @@ class Venda extends CRUDModel {
         })
     }
 
-    getPagamentos(data: Array<any>) {
+    getHorarios(data: Array<any>) {
         return new Promise((resolve, reject) => {
             this._conn = this._db.connection();
             // list query
-            let query = 'Select * from PagamentosVenda Where idVenda = ?';
+            let query = 'Select * from HorariosPromocao Where idPromocao = ?';
 
             this._conn.query({
                 sql: query,
@@ -65,11 +65,11 @@ class Venda extends CRUDModel {
         })
     }
 
-    getPagamento(data: Array<any>) {
+    getHorario(data: Array<any>) {
         return new Promise((resolve, reject) => {
             this._conn = this._db.connection();
             // list query
-            let query = 'Select * from PagamentosVenda Where idVenda = ? and idPagamento = ?';
+            let query = 'Select * from HorariosPromocao Where idPromocao = ? and idHorario = ?';
 
             this._conn.query({
                 sql: query,
@@ -86,4 +86,4 @@ class Venda extends CRUDModel {
     }
 }
 
-export default Venda;
+export default Promocao;

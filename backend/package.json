@@ -5,7 +5,8 @@
   "author": "CottonSheep",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --ignore node_modules/ --exec ts-node index.ts"
+    "dev": "nodemon --ignore node_modules/ --exec ts-node index.ts",
+    "start": "node index.ts"
   },
   "dependencies": {
     "dotenv": "^8.2.0",

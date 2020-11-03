@@ -1,17 +1,17 @@
 import CRUDController from '../../Components/CRUDController';
-import ModelVenda from '../../Models/Venda';
+import ModelPromocao from '../../Models/Promocao';
 import { Request, Response } from 'express';
 
-class Venda extends CRUDController {
+class Promocao extends CRUDController {
     constructor() {
-        super(new ModelVenda('Venda'));
+        super(new ModelPromocao('Promocao'));
     }
 
     async getItens(req: Request, res: Response) {
         const keys = req.query;
         const data = Object.values(keys);
 
-        const model = this.Model as ModelVenda;
+        const model = this.Model as ModelPromocao;
 
         await model.getItens(data)
             .then((rows) => {
@@ -28,7 +28,7 @@ class Venda extends CRUDController {
         const keys = req.query;
         const data = Object.values(keys);
 
-        const model = this.Model as ModelVenda;
+        const model = this.Model as ModelPromocao;
 
         await model.getItem(data)
             .then((rows) => {
@@ -41,13 +41,13 @@ class Venda extends CRUDController {
         model.free();
     }
 
-    async getPagamentos(req: Request, res: Response) {
+    async getHorarios(req: Request, res: Response) {
         const keys = req.query;
         const data = Object.values(keys);
 
-        const model = this.Model as ModelVenda;
+        const model = this.Model as ModelPromocao;
 
-        await model.getPagamentos(data)
+        await model.getHorarios(data)
             .then((rows) => {
                 return res.status(201).json( rows );
             })
@@ -58,13 +58,13 @@ class Venda extends CRUDController {
         model.free();
     }
     
-    async getPagamento(req: Request, res: Response) {
+    async getHorario(req: Request, res: Response) {
         const keys = req.query;
         const data = Object.values(keys);
 
-        const model = this.Model as ModelVenda;
+        const model = this.Model as ModelPromocao;
 
-        await model.getPagamento(data)
+        await model.getHorario(data)
             .then((rows) => {
                 return res.status(201).json( rows );
             })
@@ -76,4 +76,4 @@ class Venda extends CRUDController {
     }
 }
 
-export default Venda;
+export default Promocao;
