@@ -5,21 +5,23 @@ class Usuario extends CRUDModel {
         super(tableName, undefined);
     }
 
-    login(usuario: String, senha: String) {
+    login(usuario: String) {
         return new Promise((resolve, reject) => {
+            this._conn = this._db.connection();
+            
             this._conn.query({
-                sql: 'Select * from Usuario Where Usuario = ? and Senha = ?',
-                values: [usuario, senha]
+                sql: 'Select * from Usuario Where Usuario = ?',
+                values: [usuario]
             }, 
             (err, rows) => {
                 if (err) {
                     reject(err);
                 }else {
-                    console.log(rows);
                     resolve(rows);
                 }
             });
         })
+            
     }
 }
 

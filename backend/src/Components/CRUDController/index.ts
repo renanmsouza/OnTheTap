@@ -1,5 +1,6 @@
 import CRUDModel from '../CRUDModel';
 import { Request, Response } from 'express';
+import 'dotenv/config';
 
 class CRUDController {
     //protected
@@ -7,6 +8,10 @@ class CRUDController {
 
     constructor(model: CRUDModel) {
         this.Model = model;
+    }
+
+    AuthController(req: Request, res: Response) {
+
     }
 
     async getAll(req: Request, res: Response) {
