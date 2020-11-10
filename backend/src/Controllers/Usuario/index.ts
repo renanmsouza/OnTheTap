@@ -2,6 +2,7 @@ import CRUDController from '../../Components/CRUDController';
 import ModelUsuario from '../../Models/Usuario';
 import { Request, Response } from 'express';
 import 'dotenv/config';
+import jwt from 'jsonwebtoken';
 import CryptoJS from 'crypto-js';
 
 interface usuarios {
@@ -54,7 +55,18 @@ class Usuario extends CRUDController {
                 usuario = rows as Array<usuarios>;
                 const bytes = CryptoJS.AES.decrypt(String(usuario[0].Senha), String(Key));
 
-                if (Senha === bytes.toString(CryptoJS.enc.Utf8)) { 
+                if (Senha === bytes.toString(CryptoJS.enc.Utf8)) {
+                    const token = jwt.sign({
+                            auth: true, 
+                            idUsuario: usuario[0].idUsuario,
+                            nome: usuario[0].Nome,
+                            admministrador: usuario[0].Admministrador,
+                            caixa: usuario[0].Caixa,
+                            garcom: usuario[0].Garcon 
+                        }, String(process.env.AUTH_TOKEN));
+                    
+                    res.cookie('auth_token',token,{expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 1)), httpOnly:true});
+
                     return res.status(201).json({ message: 'Sucesso' });
                 }else{
                     return res.status(401).json({ erro: 'Usuário ou Senha Inválidos' });

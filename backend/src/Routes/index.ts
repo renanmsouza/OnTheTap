@@ -17,6 +17,7 @@ import { ResumoCaixa } from './Entities/ResumoCaixa';
 import { UnidadeMedida } from './Entities/UnidadeMedida';
 import { Usuario } from './Entities/Usuario';
 import { Venda } from './Entities/Venda';
+import Token from './Token';
 
 export function Routes(app: Application) {
     AdicionaisCategoria(app);
@@ -39,7 +40,7 @@ export function Routes(app: Application) {
     Venda(app);
 
     // Home
-    app.get('/', (req, res) => {
+    app.get('/', Token.verifyJWT, (req, res) => {
         res.status(200).json({ message: 'Hello World!' });    
     })
 }
