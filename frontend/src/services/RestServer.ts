@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const restServer = axios.create({
+const RestServer = axios.create({
     baseURL: 'http://localhost:3001'
 })
 
-export default restServer;
+export default RestServer;

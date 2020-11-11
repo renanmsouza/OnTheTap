@@ -16,5 +16,5 @@ export function Usuario(app: Application) {
     app.delete('/api/usuario/del', Token.verifyJWT, (req, res) => Usuario.delete(req, res));
 
 
-    app.get('/api/usuario/login', (req, res) => Usuario.login(req, res));
+    app.patch('/api/usuario/login', (req, res) => Usuario.login(req, res));
 }

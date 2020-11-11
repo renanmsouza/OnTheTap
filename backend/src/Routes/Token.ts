@@ -19,16 +19,16 @@ class Token {
         }else{
           const token = req.cookies.auth_token
           if (!token) 
-              return res.status(401).json({ auth: false, message: 'No token provided.' });
+              return res.status(404).json({ auth: false, message: 'No token provided.' });
           
           jwt.verify( String(token), String(process.env.AUTH_TOKEN), function(err, decoded) {
             const dec_auth = decoded as auth_cookie;
   
             if (err) 
-              return res.status(500).json({ auth: false, message: 'Failed to authenticate token.' });
+              return res.status(403).json({ auth: false, message: 'Failed to authenticate token.' });
             
             if (!dec_auth.auth) {
-              return res.status(500).json({ auth: false, message: 'Invalid Token!' });  
+              return res.status(403).json({ auth: false, message: 'Invalid Token!' });  
             }
             
             next();

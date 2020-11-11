@@ -67,13 +67,13 @@ class Usuario extends CRUDController {
                     
                     res.cookie('auth_token',token,{expires: new Date(Date.now() + (1000 * 60 * 60 * 24 * 1)), httpOnly:true});
 
-                    return res.status(201).json({ message: 'Sucesso' });
+                    return res.status(202).json({ message: 'Sucesso' });
                 }else{
                     return res.status(401).json({ erro: 'Usuário ou Senha Inválidos' });
                 } 
             })
             .catch((err) => {
-                return res.status(400).json( err );                                                                                                                                                                                                                                            
+                return res.status(418).json( err );                                                                                                                                                                                                                                            
             });
             
         model.free();
