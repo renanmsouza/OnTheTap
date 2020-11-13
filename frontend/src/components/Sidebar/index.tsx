@@ -8,8 +8,11 @@ import {
   SidebarFooter,
   SidebarContent,
 } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaCashRegister, FaBars, FaList, FaAddressBook, FaHeart } from 'react-icons/fa';
+
+import { FaTachometerAlt, FaCashRegister, FaBars, FaHamburger, FaAddressBook, FaMoneyCheckAlt } from 'react-icons/fa';
 import { FiCode } from 'react-icons/fi'
+import { GiHotMeal } from "react-icons/gi";
+
 import sidebarBg from '../../assets/images/pub.jpg';
 
 import './styles.scss';
@@ -61,63 +64,32 @@ const Sidebar: React.FC<InputProps> = ({image, rtl}) => {
             </SidebarHeader>
 
             <SidebarContent>
-                <Menu iconShape="circle">
-                    <MenuItem
-                        icon={<FaTachometerAlt />}
-                        // suffix={<span className="badge red">{'new'}</span>}
-                    >
+                <Menu iconShape="round">
+                    <MenuItem icon={<FaTachometerAlt />}>
                         {'Dashboard'}
                         <Link to="/admin/dashboard" />
                     </MenuItem>
-                    
-                    <MenuItem icon={<FaCashRegister />}> 
-                        {'Caixa'}
-                        <Link to="/caixa/principal" />
-                    </MenuItem>
 
-                    <MenuItem icon={<FaCashRegister />}> 
+                    <SubMenu title={'Caixa'} icon={<FaCashRegister />}>
+                        <MenuItem>{'Gestão de Caixa'} <Link to="/caixa/principal" /> </MenuItem>
+                        <MenuItem>{'Fluxo de Caixa'} <Link to="/admin/gestaocaixa" /> </MenuItem>
+                    </SubMenu>
+
+                    <MenuItem icon={<GiHotMeal />}> 
                         {'Garçom'}
                         <Link to="/garcom/principal" />
                     </MenuItem>
                 </Menu>
                 <Menu iconShape="circle">
 
-                <SubMenu
-                    // suffix={<span className="badge yellow">3</span>}
-                    title={'Cadastros'}
-                    icon={<FaAddressBook />}
-                >
-                    <SubMenu title={`${'Produtos'}`}>
+                    <SubMenu title={'Produtos'} icon={<FaHamburger />}>
                         <MenuItem>{'Cadastro'}</MenuItem>
                         <MenuItem>{'Categorias'}</MenuItem>
                         <MenuItem>{'Unidades de Medida'}</MenuItem>
                     </SubMenu>
-                    <MenuItem>{'submenu'} 2</MenuItem>
-                    <MenuItem>{'submenu'} 3</MenuItem>
-                </SubMenu>
 
-                <SubMenu
-                    prefix={<span className="badge gray">3</span>}
-                    title={'withPrefix'}
-                    icon={<FaHeart />}
-                >
-                    <MenuItem>{'submenu'} 1</MenuItem>
-                    <MenuItem>{'submenu'} 2</MenuItem>
-                    <MenuItem>{'submenu'} 3</MenuItem>
-                </SubMenu>
-                <SubMenu title={'multiLevel'} icon={<FaList />}>
-                    <MenuItem>{'submenu'} 1 </MenuItem>
-                    <MenuItem>{'submenu'} 2 </MenuItem>
-                    <SubMenu title={`${'submenu'} 3`}>
-                    <MenuItem>{'submenu'} 3.1 </MenuItem>
-                    <MenuItem>{'submenu'} 3.2 </MenuItem>
-                    <SubMenu title={`${'submenu'} 3.3`}>
-                        <MenuItem>{'submenu'} 3.3.1 </MenuItem>
-                        <MenuItem>{'submenu'} 3.3.2 </MenuItem>
-                        <MenuItem>{'submenu'} 3.3.3 </MenuItem>
-                    </SubMenu>
-                    </SubMenu>
-                </SubMenu>
+                    <MenuItem icon={<FaMoneyCheckAlt />}>{'Promoções'}</MenuItem>
+
                 </Menu>
             </SidebarContent>
 
