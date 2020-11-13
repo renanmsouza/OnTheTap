@@ -8,23 +8,30 @@ import {
   SidebarFooter,
   SidebarContent,
 } from 'react-pro-sidebar';
-import { FaTachometerAlt, FaGem, FaBars, FaList, FaRegLaughWink, FaHeart } from 'react-icons/fa';
-// import sidebarBg from './assets/bg1.jpg';
+import { FaTachometerAlt, FaCashRegister, FaBars, FaList, FaAddressBook, FaHeart } from 'react-icons/fa';
+import { FiCode } from 'react-icons/fi'
+import sidebarBg from '../../assets/images/pub.jpg';
 
 import './styles.scss';
+import { Link } from 'react-router-dom';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    image?: string, 
+    image?: boolean, 
     collapsed?: boolean, 
     rtl?: boolean, 
 }
 
-const Sidebar: React.FC<InputProps> = ({image, collapsed, rtl}) => {
+const Sidebar: React.FC<InputProps> = ({image, rtl}) => {
     const [toggled, setToggled] = useState(false);
+    const [collapsed, setCollapsed] = useState(false);
 
     const handleToggleSidebar = (value: boolean) => {
         setToggled(value);
     };
+
+    const handleCollapseSidebar = (value: boolean) => {
+        setCollapsed(value);
+    }
 
     return (
         <div className="sidebar-wrapper">
@@ -33,7 +40,7 @@ const Sidebar: React.FC<InputProps> = ({image, collapsed, rtl}) => {
         </div>
         
             <ProSidebar
-            //   image={image ? sidebarBg : false}
+            image={sidebarBg}
             rtl={rtl}
             collapsed={collapsed}
             toggled={toggled}
@@ -41,42 +48,54 @@ const Sidebar: React.FC<InputProps> = ({image, collapsed, rtl}) => {
             onToggle={handleToggleSidebar}
             >
             <SidebarHeader>
-                <div
-                style={{
-                    padding: '24px',
-                    textTransform: 'uppercase',
-                    fontWeight: 'bold',
-                    fontSize: 14,
-                    letterSpacing: '1px',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                }}
-                >
-                {'sidebarTitle'}
+                <div className='title'>
+                <button className="collapse-btn" type="button" onClick={() => handleCollapseSidebar(!collapsed)}>
+                    <FiCode />
+                </button>
+                <div className="title-text">
+                    OnTheTap
                 </div>
+                </div>
+                
+                
             </SidebarHeader>
 
             <SidebarContent>
                 <Menu iconShape="circle">
-                <MenuItem
-                    icon={<FaTachometerAlt />}
-                    suffix={<span className="badge red">{'new'}</span>}
-                >
-                    {'dashboard'}
-                </MenuItem>
-                <MenuItem icon={<FaGem />}> {'components'}</MenuItem>
+                    <MenuItem
+                        icon={<FaTachometerAlt />}
+                        // suffix={<span className="badge red">{'new'}</span>}
+                    >
+                        {'Dashboard'}
+                        <Link to="/admin/dashboard" />
+                    </MenuItem>
+                    
+                    <MenuItem icon={<FaCashRegister />}> 
+                        {'Caixa'}
+                        <Link to="/caixa/principal" />
+                    </MenuItem>
+
+                    <MenuItem icon={<FaCashRegister />}> 
+                        {'Garçom'}
+                        <Link to="/garcom/principal" />
+                    </MenuItem>
                 </Menu>
                 <Menu iconShape="circle">
+
                 <SubMenu
-                    suffix={<span className="badge yellow">3</span>}
-                    title={'withSuffix'}
-                    icon={<FaRegLaughWink />}
+                    // suffix={<span className="badge yellow">3</span>}
+                    title={'Cadastros'}
+                    icon={<FaAddressBook />}
                 >
-                    <MenuItem>{'submenu'} 1</MenuItem>
+                    <SubMenu title={`${'Produtos'}`}>
+                        <MenuItem>{'Cadastro'}</MenuItem>
+                        <MenuItem>{'Categorias'}</MenuItem>
+                        <MenuItem>{'Unidades de Medida'}</MenuItem>
+                    </SubMenu>
                     <MenuItem>{'submenu'} 2</MenuItem>
                     <MenuItem>{'submenu'} 3</MenuItem>
                 </SubMenu>
+
                 <SubMenu
                     prefix={<span className="badge gray">3</span>}
                     title={'withPrefix'}
