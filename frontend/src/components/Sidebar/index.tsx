@@ -9,8 +9,7 @@ import {
   SidebarContent,
 } from 'react-pro-sidebar';
 
-import { FaTachometerAlt, FaCashRegister, FaBars, FaHamburger, FaAddressBook, FaMoneyCheckAlt } from 'react-icons/fa';
-import { FiCode } from 'react-icons/fi'
+import { FaTachometerAlt, FaCashRegister, FaBars, FaHamburger, FaAngleDoubleDown, FaMoneyCheckAlt } from 'react-icons/fa';
 import { GiHotMeal } from "react-icons/gi";
 
 import sidebarBg from '../../assets/images/pub.jpg';
@@ -52,15 +51,13 @@ const Sidebar: React.FC<InputProps> = ({image, rtl}) => {
             >
             <SidebarHeader>
                 <div className='title'>
-                <button className="collapse-btn" type="button" onClick={() => handleCollapseSidebar(!collapsed)}>
-                    <FiCode />
-                </button>
-                <div className="title-text">
-                    OnTheTap
-                </div>
-                </div>
-                
-                
+                    <div className="collapse-btn" onClick={() => handleCollapseSidebar(!collapsed)}>
+                        <FaAngleDoubleDown />
+                    </div>
+                    <div className="title-text">
+                        OnTheTap
+                    </div>
+                </div>  
             </SidebarHeader>
 
             <SidebarContent>
