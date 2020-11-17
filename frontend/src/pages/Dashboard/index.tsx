@@ -3,7 +3,7 @@ import Sidebar from '../../components/Sidebar';
 
 function Dashboard() {
     return (  
-        <Sidebar collapsed={false} />
+        <Sidebar collapsed={true} />
     )
 }
 

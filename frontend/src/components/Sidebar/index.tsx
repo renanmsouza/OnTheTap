@@ -12,7 +12,7 @@ import {
 import { FaTachometerAlt, FaCashRegister, FaBars, FaHamburger, FaAngleDoubleDown, FaMoneyCheckAlt } from 'react-icons/fa';
 import { GiHotMeal } from "react-icons/gi";
 
-import sidebarBg from '../../assets/images/pub.jpg';
+import sidebarBg from '../../assets/images/pub_2.png';
 
 import './styles.scss';
 import { Link } from 'react-router-dom';
