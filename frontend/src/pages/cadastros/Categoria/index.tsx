@@ -1,12 +1,10 @@
 import React from 'react';
-import Sidebar from '../../../components/Sidebar';
-import SimpleHeader from '../../../components/SimpleHeader';
+import NavigationFrame from '../../../components/NavigationFrame';
 
 function Categoria() {
     return (  
         <div className="categoria-wrapper">
-            <Sidebar collapsed={true} />
-            <SimpleHeader title="Categoria" /> 
+            <NavigationFrame title="Cadastro de Categoria" />    
         </div>
     )
 }

@@ -45,7 +45,7 @@ const ItemList: React.FC<InputProps> = (
                     />
 
                     <ListItemSecondaryAction>
-                        <IconButton edge="end" aria-label={rest.actionButtonLabel}>
+                        <IconButton edge="end" aria-label={rest.actionButtonLabel} onClick={() => rest.actionButtonClick}>
                             {rest.actionButtonIcon}
                         </IconButton>
                     </ListItemSecondaryAction>

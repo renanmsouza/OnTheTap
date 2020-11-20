@@ -37,20 +37,20 @@ const Sidebar: React.FC<InputProps> = ({image, rtl}) => {
 
     return (
         <div className="sidebar-wrapper">
-        <div className="btn-toggle" onClick={() => handleToggleSidebar(true)}>
-            <FaBars />
-        </div>
+            <div className="btn-toggle" onClick={() => handleToggleSidebar(true)}>
+                <FaBars />
+            </div>
         
             <ProSidebar
-            image={sidebarBg}
-            rtl={rtl}
-            collapsed={collapsed}
-            toggled={toggled}
-            breakPoint="md"
-            onToggle={handleToggleSidebar}
+                image={sidebarBg}
+                rtl={rtl}
+                collapsed={collapsed}
+                toggled={toggled}
+                breakPoint="md"
+                onToggle={handleToggleSidebar}
             >
             <SidebarHeader>
-                <div className='title'>
+                <div className='title-header'>
                     <div className="collapse-btn" onClick={() => handleCollapseSidebar(!collapsed)}>
                         <FaAngleDoubleDown />
                     </div>
@@ -91,7 +91,7 @@ const Sidebar: React.FC<InputProps> = ({image, rtl}) => {
             </SidebarContent>
 
             <SidebarFooter >
-                
+                 
             </SidebarFooter>
             </ProSidebar>
         </div>

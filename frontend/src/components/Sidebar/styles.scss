@@ -11,9 +11,9 @@ $icon-size: 35px;
 .sidebar-wrapper {
   height: 100%;
 
-  .title{
+  .title-header{
     width: 100%;
-    height: 2.5rem;
+    height: 3.6rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,8 +30,8 @@ $icon-size: 35px;
   .btn-toggle {
     cursor: pointer;
     z-index: 1000;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     background: #353535;
     color: #fff;
     text-align: center;
@@ -93,7 +93,7 @@ $icon-size: 35px;
       line-height: 40px;
       padding: 0;
     }
-    .title{
+    .title-header{
       text-indent: 100%;
       white-space: nowrap;
       overflow: hidden;
@@ -183,8 +183,8 @@ $icon-size: 35px;
   @media (max-width: $breakpoint-md) {
     .btn-toggle {
       display: flex;
-      margin-left: 6px;
-      margin-top: 6px;
+      margin-left: 7px;
+      margin-top: 7px;
       position: absolute;
     }
 
