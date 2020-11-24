@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { useHistory } from 'react-router-dom';
 import Input from '../../components/Input';
-import RestServer from '../../services/RestServer'
+import RestServer from '../../services/RestServer';
 
 import './styles.css';
 
@@ -39,7 +39,7 @@ function Login() {
     return (
         <div id="login-page" className="page-container">
             <main className="form-wrapper">
-                <fieldset>
+                <fieldset className="fields">
                     <legend>Login</legend>
                     <Input name="Usuario" label="Usuário" type="text" defaultValue={values.Usuario} onChange={handleChange} />
                     <Input name="Senha" label="Senha" type="password" defaultValue={values.Senha} onChange={handleChange} />
